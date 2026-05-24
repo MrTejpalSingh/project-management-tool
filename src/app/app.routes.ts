@@ -18,6 +18,7 @@ import { Routes } from '@angular/router';
 import { MemberDashboard } from './member/member-dashboard/member-dashboard';
 import { Notifications } from './shared/components/entitiy-level/notifications/notifications';
 import { ActivityLog } from './shared/components/entitiy-level/activity-log/activity-log';
+import { Layout } from './shared/components/ui-level/layout/layout';
 
 export const routes: Routes = [
     {
@@ -26,6 +27,7 @@ export const routes: Routes = [
     },
     {
         path: 'admin',
+        component: Layout,
         children:[
             { path: 'dashboard', component: AdminDashboard},
             {
@@ -71,6 +73,7 @@ export const routes: Routes = [
     },
     {
         path: 'pm',
+        component: Layout,
         children:[
             {
                 path: 'dashboard',
@@ -106,6 +109,7 @@ export const routes: Routes = [
     },
     {
         path: 'member',
+        component: Layout,
         children:[
             {
                 path: 'dashboard',

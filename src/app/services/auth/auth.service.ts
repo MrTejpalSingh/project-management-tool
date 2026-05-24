@@ -6,7 +6,7 @@ import { UserService } from '../user/user.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthServic {
+export class AuthService {
 
   private currentUser: User | null = null;
   private readonly SESSION_CURRENT_USER_KEY = 'currentUser'
@@ -29,13 +29,19 @@ export class AuthServic {
     if(user){
       const {password, ...safeUSer} = user;
       sessionStorage.setItem(this.SESSION_CURRENT_USER_KEY,JSON.stringify(safeUSer))
+      this.currentUser = user;
       return true;
     }
     return false;
   }
 
+    logout(): void {
+    this.currentUser = null;
+    sessionStorage.removeItem(this.SESSION_CURRENT_USER_KEY);
+  }
+
   getCurrentUser(): User | null{ return this.currentUser;}
-  getRole(): Role | undefined{ return this.currentUser?.role}
+  getRole(): Role | undefined{ return this.currentUser?.role }
   isLoggedIn(): boolean { return this.currentUser !== null}
   
 }

@@ -1,1 +1,23 @@
-<p>navbar works!</p>
+<div class="navbar">
+
+  <div class="navbar-left">
+    <h2 class="app-title">ProjectFlow</h2>
+  </div>
+
+  <div class="navbar-right">
+    <div class="user-info">
+      <div class="user-avatar">
+        {{ currentUser?.name?.charAt(0) }}
+      </div>
+      <div class="user-details">
+        <span class="user-name">{{ currentUser?.name }}</span>
+        <span class="user-role">{{ currentUser?.role }}</span>
+      </div>
+    </div>
+
+    <button class="logout-btn" (click)="logout()">
+      Logout
+    </button>
+  </div>
+
+</div>

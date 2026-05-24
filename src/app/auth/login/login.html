@@ -1,1 +1,51 @@
-<p>login works!</p>
+<div class="login-wrapper">
+  <div class="login-card">
+
+    <div class="login-header">
+      <h1>ProjectFlow</h1>
+      <p>Sign in to your account</p>
+    </div>
+
+    <div class="login-form">
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="Enter your email"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Enter your password"
+        />
+      </div>
+
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <button class="login-btn" (click)="onLogin()">
+        Sign In
+      </button>
+
+    </div>
+
+    <div class="demo-credentials">
+      <p>Demo Credentials</p>
+      <span>admin@app.com / admin123</span>
+      <span>pm1@app.com / pm123</span>
+      <span>member1@app.com / member123</span>
+    </div>
+
+  </div>
+</div>
