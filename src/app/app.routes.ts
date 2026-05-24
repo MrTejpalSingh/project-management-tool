@@ -1,5 +1,3 @@
-import { Notifications } from './admin/notifications/notifications';
-import { ActivityLog } from './admin/activity-log/activity-log';
 import { Settings } from './admin/settings/settings';
 import { AdminDashboard } from './admin/admin-dashboard/admin-dashboard';
 import { Login } from './auth/login/login';
@@ -17,6 +15,9 @@ import { UserDetail } from './shared/components/entitiy-level/users/user-detail/
 import { UserEdit } from './shared/components/entitiy-level/users/user-edit/user-edit';
 import { PmDashboard } from './pm/pm-dashboard/pm-dashboard';
 import { Routes } from '@angular/router';
+import { MemberDashboard } from './member/member-dashboard/member-dashboard';
+import { Notifications } from './shared/components/entitiy-level/notifications/notifications';
+import { ActivityLog } from './shared/components/entitiy-level/activity-log/activity-log';
 
 export const routes: Routes = [
     {
@@ -26,74 +27,44 @@ export const routes: Routes = [
     {
         path: 'admin',
         children:[
+            { path: 'dashboard', component: AdminDashboard},
             {
-                path: '/dashboard',
-                component: AdminDashboard
-            },
-            {
-                path: '/projects',
-                component: ProjectList,
+                path: 'projects',
                 children: [
-                    {
-                        path: '/create',
-                        component: ProjectCreate,
-                    },
-                    {
-                        path: '/id',
-                        component: ProjectDetail,
-                    },
-                    {
-                        path: '/id/edit',
-                        component: ProjectEdit,
-                    }
+                    {path: '', component: ProjectList},
+                    {path: 'create', component: ProjectCreate},
+                    {path: ':id', component: ProjectDetail},
+                    {path: ':id/edit', component: ProjectEdit}
                 ]
             },
             {
-                path: '/tasks',
-                component: TaskList,
+                path: 'tasks',
                 children: [
-                    {
-                        path: '/create',
-                        component: TaskCreate,
-                    },
-                    {
-                        path: '/id',
-                        component: TaskDetail,
-                    },
-                    {
-                        path: '/id/edit',
-                        component: TaskEdit,
-                    }
+                    {path: '', component: TaskList},
+                    {path: 'create', component: TaskCreate},
+                    {path: ':id', component: TaskDetail},
+                    {path: ':id/edit', component: TaskEdit}
                 ]
             },
             {
-                path: '/users',
-                component: UserList,
+                path: 'users',
                 children: [
-                    {
-                        path: '/create',
-                        component: UserCreate,
-                    },
-                    {
-                        path: '/id',
-                        component: UserDetail,
-                    },
-                    {
-                        path: '/id/edit',
-                        component: UserEdit,
-                    }
+                    {path: '', component: UserList},
+                    {path: 'create', component: UserCreate},
+                    {path: ':id', component: UserDetail},
+                    {path: ':id/edit', component: UserEdit}
                 ]
             },
             {
-                path: '/notifications',
+                path: 'notifications',
                 component: Notifications
             },
             {
-                path: '/activity-log',
+                path: 'activity-log',
                 component: ActivityLog
             },
             {
-                path: '/settings',
+                path: 'settings',
                 component: Settings
             }
         ]
@@ -102,74 +73,61 @@ export const routes: Routes = [
         path: 'pm',
         children:[
             {
-                path: '/dashboard',
+                path: 'dashboard',
                 component: PmDashboard
             },
             {
-                path: '/projects',
-                component: ProjectList,
+                path: 'projects',
                 children: [
-                    {
-                        path: '/create',
-                        component: ProjectCreate,
-                    },
-                    {
-                        path: '/id',
-                        component: ProjectDetail,
-                    },
-                    {
-                        path: '/id/edit',
-                        component: ProjectEdit,
-                    }
+                    {path: '', component: ProjectList},
+                    {path: 'create', component: ProjectCreate},
+                    {path: ':id', component: ProjectDetail},
+                    {path: ':id/edit', component: ProjectEdit}
                 ]
             },
             {
-                path: '/tasks',
-                component: TaskList,
+                path: 'tasks',
                 children: [
-                    {
-                        path: '/create',
-                        component: TaskCreate,
-                    },
-                    {
-                        path: '/id',
-                        component: TaskDetail,
-                    },
-                    {
-                        path: '/id/edit',
-                        component: TaskEdit,
-                    }
+                    {path: '', component: TaskList},
+                    {path: 'create', component: TaskCreate},
+                    {path: ':id', component: TaskDetail},
+                    {path: ':id/edit', component: TaskEdit}
                 ]
             },
             {
-                path: '/users',
-                component: UserList,
-                children: [
-                    {
-                        path: '/create',
-                        component: UserCreate,
-                    },
-                    {
-                        path: '/id',
-                        component: UserDetail,
-                    },
-                    {
-                        path: '/id/edit',
-                        component: UserEdit,
-                    }
-                ]
-            },
-            {
-                path: '/notifications',
+                path: 'notifications',
                 component: Notifications
             },
             {
-                path: '/activity-log',
+                path: 'activity-log',
                 component: ActivityLog
+            }
+        ]
+    },
+    {
+        path: 'member',
+        children:[
+            {
+                path: 'dashboard',
+                component: MemberDashboard
             },
             {
-                path: '/settings',
-                component: Settings
+                path: 'projects',
+                children: [
+                    {path: '', component: ProjectList},
+                    {path: ':id', component: ProjectDetail}
+                ]
+            },
+            {
+                path: 'tasks',
+                children: [
+                    {path: '', component: TaskList},
+                    {path: ':id', component: TaskDetail}                
+                ]
+            },
+            {
+                path: 'notifications',
+                component: Notifications
             }
         ]
     }
